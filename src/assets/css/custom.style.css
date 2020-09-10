@@ -1,0 +1,381 @@
+/*------------------------------------------------------------------
+Project: Nlimit - Mobile Web UI Template
+Version: 1.0
+Last change: 20/12/18
+Developed by: Martin Nestorov
+Primary use: Mobile 
+-------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
+[Font]
+*------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
+
+
+
+/*-------------------------------------------------------------------
+[Helpers]
+*------------------------------------------------------------------*/
+/*** Text Colors ***/
+.txt-dark {
+	color: #161616;
+}
+/*** BG Colors ***/
+.bg-dark {
+    background-color: #161616 !important;
+}
+.bg-green {
+    background-color: #83A836 !important;
+}
+/*** Text Customization ***/
+.txt-underline {
+	text-decoration: underline;
+}
+/*** Buttons ***/
+button.btn-green,
+.btn-green {
+	color: #ffffff;
+    background-color: #83A836;
+}
+button.btn-green:hover,
+.btn-green:hover {
+    color: #ffffff;
+    background-color: #647c19;
+}
+/*** Divider ***/
+.vertical-divider {
+    color: #ffffff;
+    padding: 0 5px;
+}
+
+
+
+/*-------------------------------------------------------------------
+[Body]
+*------------------------------------------------------------------*/
+body {
+    color: #ffffff;
+}
+.wrapper-inline {
+    background-color: #efefef;
+}
+a {
+    color: #ffffff;
+    font-weight: normal;
+}
+header {
+    position: fixed;
+    background-color: #161616;
+    border-bottom: none;
+}
+header.auth {
+    padding: 10px 0 90px 0;
+}
+header.page-title {
+    text-align: left;
+}
+header span.user-name small {
+    display: block;
+    font-size: 11px;
+}
+.bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 140px;
+}
+
+
+
+/*-------------------------------------------------------------------
+[Navigation]
+*------------------------------------------------------------------*/
+.navi-menu-button.custom {
+    margin-top: -35px;
+}
+.navi-menu-button em {
+    background-color: #ffffff;
+}
+
+
+
+/*-------------------------------------------------------------------
+[Forms]
+*------------------------------------------------------------------*/
+input, button, select, textarea, label {
+    color: #161616;
+    line-height: 1.4;
+    font-weight: 600;
+}
+label{
+    cursor: pointer;
+}
+input[type="file"] {
+    display: none;
+}
+.form-label-divider span {
+    color: #161616; 
+    background-color: #efefef;
+    font-weight: bold;
+}
+.form-element {
+    border-bottom: solid 1px #e5e5e5;
+}
+select.form-element {
+    padding: 0; 
+    margin-left: 0px;
+}
+select.form-element,
+.form-element.custom {
+    border-radius: 15px;
+    border: 2px solid #EEE;
+    background-color: #FFF;
+}
+.form-element:focus {
+    border-color: #83A836;
+}
+.form-row-group .form-row .form-element.custom.padding-from-left,
+.form-row-group.with-icons .form-row .form-element {
+    padding-left: 20px;
+}
+.form-row-group.without-icons .form-row .form-element {
+    padding-left: 0;
+}
+.form-row-group.with-icons .form-row label.form-element {
+    border: none; 
+    padding-left: 0;
+}
+.form-row-group.with-icons .form-row i {
+    position: absolute;
+    line-height: 40px;
+    width: 24px;
+    color: #cccccc;
+}
+.expandable-header {
+    color: #ffffff;
+	background-color: #83A836;
+	padding: 15px;
+	border-radius: 0;
+	cursor: pointer;
+}
+.list-box .list-item {
+	padding: 5px 5px;
+	background-color: #ffffff;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.list-box .list-item .list-item-title {
+	font-weight: bold;
+	color: #161616;
+}
+.sweet-check {
+	height: 30px;
+	width: 55px;
+	border: solid 1px #161616;
+	background-color: #ffffff;
+}
+.sweet-check .outline {
+	width: 22px;
+	height: 22px;
+	background-color: #161616;
+	top: 2.5px;
+	left: 4px;
+}
+.sweet-check.checked .outline {
+	left: 27px;
+}
+.sweet-check.checked {
+	background-color: #83A836;
+	border-color: #83A836;
+}
+.form-label-divider {
+    background-color: #d4d4d4;
+    opacity: 1;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #cccccc;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #cccccc;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #cccccc;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #cccccc;
+}
+
+
+
+/*-------------------------------------------------------------------
+[Search Form]
+*------------------------------------------------------------------*/
+.search-form .close-search-form {
+    background: #83A836;
+    border: solid 1px #83A836;
+    color: #ffffff;
+}
+.search-form .form-element {
+    border-bottom: solid 1px #83A836;
+    padding: 0 10px;
+    border-radius: 0;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.1);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.1);
+    border-bottom-width: 1px;
+}
+.search-form .form-element:focus {
+    border-top-color: #ffffff;
+    border-left-color: #ffffff;
+    border-right-color: #ffffff;
+    border-bottom-color: #83A836;
+}
+.search-form .search-input-btn:hover, 
+.search-form .search-input-btn:focus {
+    color: #83A836;
+}
+
+
+
+/*-------------------------------------------------------------------
+[User Meta]
+*------------------------------------------------------------------*/
+.user-meta {
+    margin-top: 0;
+}
+.user-image {
+    display: block;
+    width: 38px;
+    height: 38px;
+    border: solid 1px #ffffff;
+    border-radius: 50%;
+    float: left;
+    padding: 2px;
+    margin-top: -4px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.user-image img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+
+
+/*-------------------------------------------------------------------
+[Google Map]
+*------------------------------------------------------------------*/
+#googlemap {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+#under-gmap {
+    z-index: 1;
+    height: auto;
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+
+
+/*-------------------------------------------------------------------
+[Side Buttons]
+*------------------------------------------------------------------*/
+.side-buttons a {
+    position: absolute;
+    left: 0px;
+    transition: 0.3s;
+    padding: 10px 10px;
+    width: 70px;
+    text-decoration: none;
+    border-radius: 0 15px 15px 0;
+}
+
+a#pay {
+    bottom: 3rem;
+    background-color: #83a836;
+}
+a#pay i {
+    margin: 0 8px;
+}
+
+
+
+/*-------------------------------------------------------------------
+[FA Icons]
+*------------------------------------------------------------------*/
+i.fa-qrcode {
+    position: absolute;
+    top: 47%;
+    left: auto; 
+    right: 20px; 
+    color: #666666;
+}
+i.fa-times-circle {
+    position: absolute;
+    color: #666666;
+    cursor: pointer;
+}
+ul.main-menu > li > a > i {
+    display: inline-block;
+    width: auto!important;
+    margin-top: 15px;
+}
+span.menu-icon-name {
+    font-size: 12px;
+}
+
+
+/*-------------------------------------------------------------------
+[Select2 js custom styles]
+*------------------------------------------------------------------*/
+.select2  {
+    width: 100%;
+}
+.select2-container--default .select2-selection--single {
+    border-radius: 15px ;
+    border: 2px solid #eeeeee ;
+    background-color: #ffffff;
+    height: 40px;
+    outline: none;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+    display: block;
+    padding-left: 8px;
+    padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #161616;
+    line-height: 40px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 26px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 20px;
+}
+.select2-dropdown {
+    background-color: white;
+    border: 1px solid #dddddd;
+    color: #161616;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    left: -100000px;
+    width: 100%;
+    z-index: 1051;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #83a836;
+    color: white;
+}
