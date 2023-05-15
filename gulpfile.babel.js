@@ -1,14 +1,14 @@
-import gulp from 'gulp';
-import yargs from 'yargs';
-import cleancss from 'gulp-clean-css';
-import gulpif from 'gulp-if';
-import sourcemaps from 'gulp-sourcemaps';
-import imagemin from 'gulp-imagemin';
-import del from 'del';
-import webpack from 'webpack-stream';
-import uglify from 'gulp-uglify';
-import named from 'vinyl-named';
-import zip from 'gulp-zip';
+const gulp = require('gulp');
+const yargs = require('yargs');
+const cleancss = require('gulp-clean-css');
+const gulpif = require('gulp-if');
+const sourcemaps = require('gulp-sourcemaps');
+const imagemin = require('gulp-imagemin');
+const del = require('del');
+const webpack = require('webpack-stream');
+const uglify = require('gulp-uglify');
+const named = require('vinyl-named');
+const zip = require('gulp-zip');
 
 const PRODUCTION = yargs.argv.prod;
 
@@ -40,7 +40,7 @@ exports.default = (done) => {
 	done();
 }
 
-export const styles = () => {
+module.exports.styles = () => {
 	return gulp.src(paths.styles.src)
 		.pipe(gulpif(!PRODUCTION, sourcemaps.init()))
 		.pipe(gulpif(PRODUCTION, cleancss({ 'compatability': 'ie8' })))
@@ -48,18 +48,18 @@ export const styles = () => {
 		.pipe(gulp.dest(paths.styles.dest));
 }
 
-export const images = () => {
+module.exports.images = () => {
 	return gulp.src(paths.images.src)
 		.pipe(gulpif(PRODUCTION, imagemin()))
 		.pipe(gulp.dest(paths.images.dest));
 }
 
-export const fonts = () => {
-	return gulp.src('node_modules/font-awesome/**')
-	  	.pipe(gulp.dest('dist/vendor/font-awesome'))
+module.exports.fonts = () => {
+    return gulp.src('node_modules/font-awesome/**')
+        .pipe(gulp.dest('dist/vendor/font-awesome'))
 }
 
-export const scripts = () => {
+module.exports.scripts = () => {
 	return gulp.src(paths.scripts.src)
 		.pipe(named())
         .pipe(webpack({
@@ -86,31 +86,58 @@ export const scripts = () => {
 		.pipe(gulp.dest(paths.scripts.dest));
 }
 
-export const copy = () => {
+module.exports.copy = () => {
 	return gulp.src(paths.other.src)
 		.pipe(gulp.dest(paths.other.dest));
 }
 
-export const clean = (done) => {
+module.exports.clean = (done) => {
 	del(['dist','packaged']).then(paths => {
 		console.log('Deleted files and folders:\n', paths.join('\n'));
+		done(); // Call the callback function to signal async completion
 	});
-	done();
 }
 
-export const watch = () => {
-	gulp.watch('src/assets/css/**/*.css', styles);
-	gulp.watch('src/assets/js/**/*.js', scripts);
-	gulp.watch(paths.images.src, images);
-	gulp.watch(paths.other.src, copy);
+module.exports.watch = () => {
+	gulp.watch('src/assets/css/**/*.css', module.exports.styles);
+	gulp.watch('src/assets/js/**/*.js', module.exports.scripts);
+	gulp.watch(paths.images.src, module.exports.images);
+	gulp.watch(paths.other.src, module.exports.copy);
 }
 
-export const compress = () => {
+module.exports.compress = () => {
 	return gulp.src(paths.packaged.src)
-		.pipe(zip('nlimit-mobile.zip'))
+		.pipe(zip('gdir-mobile.zip'))
 		.pipe(gulp.dest(paths.packaged.dest));
 }
 
-export const dev = gulp.series(gulp.parallel(styles, images, fonts, scripts, copy), watch);
-export const prod = gulp.series(clean, gulp.parallel(styles, images, fonts, scripts, copy));
-export const bundle = gulp.series(prod, compress);
+module.exports.dev = gulp.series(
+    gulp.parallel(
+        module.exports.styles, 
+        module.exports.images, 
+        module.exports.fonts, 
+        module.exports.scripts, 
+        module.exports.copy
+    ), 
+    module.exports.watch
+);
+
+module.exports.prod = gulp.series(
+    module.exports.clean, 
+    gulp.parallel(
+        module.exports.styles, 
+        module.exports.images, 
+        module.exports.fonts, 
+        module.exports.scripts, 
+        module.exports.copy
+    )
+);
+
+module.exports.bundle = gulp.series(
+    module.exports.prod, 
+    module.exports.compress
+);
+
+module.exports.dev = gulp.series(gulp.parallel(module.exports.styles, module.exports.images, module.exports.fonts, module.exports.scripts, module.exports.copy), module.exports.watch);
+module.exports.prod = gulp.series(module.exports.clean, gulp.parallel(module.exports.styles, module.exports.images, module.exports.fonts, module.exports.scripts, module.exports.copy));
+module.exports.bundle = gulp.series(module.exports.prod, module.exports.compress);

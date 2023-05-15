@@ -11,7 +11,7 @@
     "bundle": "gulp bundle --prod"
   },
   "author": "Martin Nestorov",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
